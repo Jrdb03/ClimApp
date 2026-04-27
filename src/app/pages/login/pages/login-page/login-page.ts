@@ -15,6 +15,8 @@ export class LoginPage {
   private loginService = inject(LoginService);
   private router = inject(Router);
 
+  loginError: boolean = false;
+
   formUtils = FormUtils;
 
   loginForm: FormGroup = this.fb.group({
@@ -42,15 +44,23 @@ export class LoginPage {
       } else {
         
         this.loginService.setAuthenticated(false);
-
+        this.loginError = true;
         console.log('Credenciales incorrectas');
       }
     },
     error: (err) => {
       console.error('Error en login', err);
       this.loginService.setAuthenticated(false);
+      this.loginError = true;
     }
   });
+
+  this.loginForm.valueChanges.subscribe(() => {
+    this.loginError = false;
+  });
+
 }
 
  }
+
+

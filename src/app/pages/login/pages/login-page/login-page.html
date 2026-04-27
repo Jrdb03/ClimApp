@@ -29,6 +29,12 @@
                 {{formUtils.getFieldError(loginForm, "password")}}
               </span>
             }
+
+            @if (loginError) {
+              <span class="form-text text-red-500">
+                Email o contraseña incorrectos
+              </span>
+            }
             
             <button class="btn btn-neutral mt-4" type="submit">Login</button>
           </fieldset>
