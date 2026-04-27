@@ -1,0 +1,11 @@
+{
+  "name": "mock-api-auth",
+  "private": true,
+  "scripts": {
+    "api": "json-server db.json --port 3000"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4"
+  }
+}
+ 

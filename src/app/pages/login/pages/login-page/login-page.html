@@ -1,0 +1,39 @@
+<div class="hero min-h-screen relative overflow-hidden">
+  
+  <img src="media/clima.gif"
+     class="absolute inset-0 w-full h-full object-cover z-0" />
+
+  <div class="absolute inset-0 bg-black/60 z-10"></div>
+
+  <div class="hero-content flex-col lg:flex-row-reverse relative z-20 text-white w-full">
+  
+    <form class="w-full max-w-sm shrink-0" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="card bg-white w-full shadow-2xl text-base-content">
+        <div class="card-body">
+          <fieldset class="fieldset">
+            
+            <label class="label text-base-100">Email</label>
+            <input type="email" class="input bg-gray-100 w-full text-base-100 placeholder-gray-400" placeholder="Email" formControlName="email" />
+
+            @if(formUtils.isValidField(loginForm, 'email')){
+              <span class="form-text text-red-500">
+                {{formUtils.getFieldError(loginForm, "email")}}
+              </span>
+            }
+            
+            <label class="label text-base-100">Password</label>
+            <input type="password" class="input bg-gray-100 w-full text-base-100 placeholder-gray-400" placeholder="Password" formControlName="password" />
+            
+            @if(formUtils.isValidField(loginForm, 'password')){
+              <span class="form-text text-red-500">
+                {{formUtils.getFieldError(loginForm, "password")}}
+              </span>
+            }
+            
+            <button class="btn btn-neutral mt-4" type="submit">Login</button>
+          </fieldset>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
