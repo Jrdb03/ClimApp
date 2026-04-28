@@ -2,10 +2,10 @@
   
   <!-- Logo -->
   <div class="navbar-start">
-    <a class="btn btn-ghost text-xl">ClimApp</a>
+    <a routerLink="/" class="btn btn-ghost text-xl">ClimApp</a>
   </div>
 
-  @if(isLogged()){
+  @if(isLogged() && currentRoute != '/'){
 
   <!-- Buscador centrado -->
   <div class="navbar-center">
@@ -38,7 +38,12 @@
 
   <!-- Botón derecha -->
   <div class="navbar-end">
-    <a class="btn btn-ghost border border-white/30 backdrop-blur-md">Login</a>
+    @if(isLogged() && currentRoute != '/'){
+      <button class="btn btn-ghost backdrop-blur-md" (click)="logout()">Cerrar sesión</button>
+    }
+    @else {
+      <a class="btn btn-ghost border border-white/30 backdrop-blur-md">Regístrate</a>
+    }
   </div>
 
 </div>

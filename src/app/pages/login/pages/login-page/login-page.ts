@@ -36,16 +36,17 @@ export class LoginPage {
       console.log(resp);
 
       if (resp.length === 1) {
+
         this.loginService.setAuthenticated(true);
-
         console.log('Login correcto');
-
         this.router.navigate(['/weather']);
+
       } else {
         
         this.loginService.setAuthenticated(false);
         this.loginError = true;
         console.log('Credenciales incorrectas');
+        
       }
     },
     error: (err) => {
