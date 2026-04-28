@@ -59,8 +59,8 @@ export class LoginPage {
     this.loginError = false;
   });
 
-}
+  }
 
- }
+}
 
 

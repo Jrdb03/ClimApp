@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { LoginService } from '../../../pages/login/services/login.service';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -9,13 +8,9 @@ import { LoginService } from '../../../pages/login/services/login.service';
 })
 export class Header { 
 
-    private loginService = inject(LoginService);
-
-    isLogged() {
-      if(this.loginService.isAuthenticated){
-        return true;
-      }
-      return false;
-    }
+  isLogged(){
+    const sessionValue = sessionStorage.getItem('login');
+    return sessionValue ? JSON.parse(sessionValue) : false;
+  }
 
 }
