@@ -4,6 +4,12 @@ import { Weather } from '../../interfaces/weather.interface';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+/**
+ * Componente encargado de mostrar la información meteorológica.
+ *
+ * Permite al usuario buscar por ciudad y
+ * acceder a la página del mapa.
+ */
 @Component({
   selector: 'app-weather-card',
   imports: [RouterLink, CommonModule],
@@ -34,6 +40,14 @@ export class WeatherCard {
     return 'sunny-bg';
   });
 
+  /**
+   * Constructor del componente.
+   *
+   * Configura un efecto reactivo que:
+   * - Escucha cambios en las coordenadas.
+   * - Solicita automáticamente el clima cuando cambian.
+   * - Actualiza el estado del clima.
+   */
   constructor(){
     effect(() => {
       const lat = this.lat();
@@ -50,6 +64,15 @@ export class WeatherCard {
     });
   }
 
+
+  /**
+   * Realiza una búsqueda del clima por nombre de ciudad.
+   *
+   * - Si la búsqueda es válida, actualiza el clima.
+   * - Permite navegar a `/map` enviando las coordenadas.
+   *
+   * @param query Nombre de la ciudad introducida por el usuario
+   */
 
   searchCity(query: string) {
   if (!query.trim()) return;
@@ -68,24 +91,14 @@ export class WeatherCard {
   });
 }
 
+
+/**
+ * Indica si el componente se encuentra en la ruta `/weather`.
+ */
+
 get isWeatherRoute(): boolean {
   return this.url === '/weather';
 }
 
-
-  // searchCityByCoordinates(){
-  //   this.url = this.weatherService.getUrl(); 
-  //   const params = this.router.parseUrl(this.url);
-  //   const lat = params.queryParams['lat'];
-  //   const lon = params.queryParams['lon'];
-
-  //   console.log(lat, lon);
-
-  //   this.weatherService.searchByCoordinates(lon, lat).subscribe({
-  //     next: (data) => this.weather.set(data),
-  //     error: () => this.weather.set(null)
-  //   });
-
-  // }
 }
 

@@ -1,7 +1,21 @@
 import type { Weather } from "../interfaces/weather.interface";
 import type { OpenWeather } from "../interfaces/openWeather.interface";
 
+/**
+ * Clase encargada de transformar los datos obtenidos
+ * desde la API de OpenWeather al modelo interno `Weather`.
+ */
 export class WeatherMapper {
+    /**
+     * Convierte un objeto de tipo `OpenWeather`
+     * al formato interno `Weather`.
+     *
+     * @param {OpenWeather} openWeather
+     * Datos originales recibidos desde la API de OpenWeather.
+     *
+     * @returns {Weather}
+     * Objeto adaptado al modelo interno de la aplicación.
+     */
     static mapOpenWeatherToWeather(openWeather: OpenWeather): Weather {
         return {
             city: openWeather.name,

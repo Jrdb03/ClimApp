@@ -23,6 +23,17 @@ export class WeatherService {
 
     currentRoute: string = '';
     
+    /**
+     * Busca información meteorológica mediante el nombre de una ciudad a través de la API de OpenWeather.
+     *
+     * @param {string} query - Nombre de la ciudad introducida por el usuario.
+     *
+     * @returns {Observable<Weather>}
+     * Observable que emite la información meteorológica transformada.
+     *
+     * @throws {Error}
+     * Se lanza cuando no se puede obtener la información del clima.
+     */
     searchByCity(query: string): Observable<Weather>{
         query = query.toLowerCase();
 
@@ -36,6 +47,18 @@ export class WeatherService {
             );
     }
 
+    /**
+     * Busca información meteorológica usando coordenadas geográficas a trvés de la API de OpenWeather.
+     *
+     * @param {number} lat - Latitud de la ubicación.
+     * @param {number} lon - Longitud de la ubicación.
+     *
+     * @returns {Observable<Weather>}
+     * Observable que emite la información meteorológica transformada.
+     *
+     * @throws {Error}
+     * Se lanza cuando ocurre un error durante la petición.
+     */
     searchByCoordinates(lat: number, lon: number): Observable<Weather>{
         return this.http.get<OpenWeather>(`${environment.API_URL}lat=${lat}&lon=${lon}&appid=${environment.API_KEY}&units=metric`)
             .pipe(map((resp) => WeatherMapper.mapOpenWeatherToWeather(resp)),
@@ -47,6 +70,12 @@ export class WeatherService {
         );
     }
 
+    /**
+     * Obtiene la URL actual.
+     *
+     * @returns {string}
+     * Ruta activa de la aplicación.
+     */
     getUrl() {  
         return this.router.url;   
     }
