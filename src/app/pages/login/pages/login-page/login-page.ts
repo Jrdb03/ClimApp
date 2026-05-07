@@ -4,6 +4,12 @@ import { FormUtils } from '../../../../../utils/form-utils';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 
+/**
+ * Componente encargado de gestionar la pantalla de login.
+ *
+ * Permite al usuario introducir sus credenciales,
+ * validar el formulario y autenticarse mediante el servicio `LoginService`.
+ */
 @Component({
   selector: 'app-login-page',
   imports: [ReactiveFormsModule],
@@ -18,12 +24,27 @@ export class LoginPage {
   loginError: boolean = false;
 
   formUtils = FormUtils;
-
+  
+  /**
+   * Formulario reactivo de login.
+   *
+   * Contiene:
+   * - `email`: obligatorio y con formato válido.
+   * - `password`: obligatorio y con longitud mínima de 6 caracteres.
+   */
   loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.pattern(FormUtils.emailPattern)], []],
     password: ['', [Validators.required, Validators.minLength(6)]]
   })
 
+/**
+ * Envía el formulario de login y valida las credenciales.
+ *
+ * Si el login es correcto, redirige al usuario a `/weather`.
+ * En caso contrario, muestra un error de autenticación.
+ *
+ * @returns {void}
+ */
   onSubmit() {
   this.loginForm.markAllAsTouched();
 
