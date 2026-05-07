@@ -26,8 +26,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "node_modules/leaflet/dist/leaflet.css",
+            "styles": [             
               "node_modules/@mugan86/ng-leaflet/assets/styles/common.css",
               "src/styles.css" 
             ],

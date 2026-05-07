@@ -1,48 +1,11 @@
-<div class="weather-wrapper" [class]="weatherClass()">
-  <div class="card">
-    <div class="search-box">
-      <input 
-        type="text" 
-        #cityInput 
-        placeholder="Ej: Madrid, ES"
-        (keyup.enter)="searchCity(cityInput.value)">
-      <button (click)="searchCity(cityInput.value)">
-        <span class="material-icons">search</span>
-      </button>
-    </div>
+<div class="hero min-h-screen relative overflow-hidden">
+  
+  <img src="media/clima.gif"
+     class="absolute inset-0 w-full h-full object-cover z-0" />
 
-    @if (weather(); as data) {
-      <div class="fade-in">
-        <div class="date">{{ currentDate }}</div>
-        <div class="city">{{ data.city }}</div>
-        
-        <div class="main-info">
-          <img class="weather-icon" [src]="'https://openweathermap.org/img/wn/' + data.icon + '@4x.png'" alt="icon">
-          <div class="temp">{{ data.temperature }}°</div>
-        </div>
+  <div class="absolute inset-0 bg-black/60 z-10"></div>
 
-        <div class="weather-desc">{{ data.description }}</div>
-        
-        <div class="details-grid">
-          <div class="detail-item">
-            <span class="label">Humedad</span>
-            <span class="value">{{ data.humidity }}%</span>
-          </div>
-          <div class="detail-item">
-            <span class="label">Viento</span>
-            <span class="value">{{ data.windSpeed }} km/h</span>
-          </div>
-        </div>
-        <button 
-          class="map-button" 
-          [routerLink]="['/map', data.lat, data.lon]">
-          Ver en Mapa
-        </button>
-      </div>
-    } @else {
-      <div class="welcome-message">
-        <p>Introduce una ciudad</p>
-      </div>
-    }
+  <div class="hero-content flex-col lg:flex-row-reverse relative z-20 text-white w-full">
+    <app-weather-card></app-weather-card>
   </div>
 </div>

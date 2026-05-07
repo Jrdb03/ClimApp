@@ -1,0 +1,71 @@
+<div class="weather-wrapper" [ngClass]="weatherClass()">
+
+  <div class="card" [ngClass]="isWeatherRoute ? 'card-light' : 'card-dark'">
+
+    <!-- Buscador -->
+    <div 
+      class="search-box"
+      [ngClass]="isWeatherRoute ? 'search-light' : 'search-dark'"
+    >
+      <input 
+        type="text" 
+        #cityInput 
+        placeholder="Ej: Madrid, ES"
+        (keyup.enter)="searchCity(cityInput.value)"
+        [ngClass]="isWeatherRoute ? 'input-light' : 'input-dark'"
+      >
+
+      <button (click)="searchCity(cityInput.value)">
+        <span class="material-symbols-outlined">
+          search
+        </span>
+      </button>
+    </div>
+
+    @if (weather(); as data) {
+      <div class="fade-in">
+
+        <div class="date">{{ currentDate }}</div>
+        <div class="city">{{ data.city }}</div>
+        
+        <div class="main-info">
+          <img 
+            class="weather-icon" 
+            [src]="'https://openweathermap.org/img/wn/' + data.icon + '@4x.png'" 
+            alt="icon"
+          >
+          <div class="temp">{{ data.temperature }}°</div>
+        </div>
+
+        <div class="weather-desc">{{ data.description }}</div>
+        
+        <div class="details-grid">
+          <div class="detail-item">
+            <span class="label">Humedad</span>
+            <span class="value">{{ data.humidity }}%</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Viento</span>
+            <span class="value">{{ data.windSpeed }} km/h</span>
+          </div>
+        </div>
+
+        @if(isWeatherRoute){
+          <button 
+            class="map-button"
+            [ngClass]="isWeatherRoute ? 'map-light' : 'map-dark'"
+            [routerLink]="['/map']"
+            [queryParams]="{ lat: data.lat, lon: data.lon }">
+            Ver en Mapa
+          </button>
+        }
+
+      </div>
+    } @else {
+      <div class="welcome-message">
+        <p>Introduce una ciudad</p>
+      </div>
+    }
+
+  </div>
+</div>

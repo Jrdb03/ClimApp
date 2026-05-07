@@ -7,3 +7,20 @@ html, body {
     height: 100%;
     width: 100%;
 }
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.leaflet-popup-content-wrapper {
+  background: #47768f94;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: #fff;
+  border-radius: 8px;
+  text-align: center;
+}

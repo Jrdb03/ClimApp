@@ -1,49 +1,23 @@
-<div class="navbar absolute top-0 left-0 w-full z-50 bg-transparent text-white">
-  
+<div
+  class="navbar absolute top-0 left-0 w-full z-50 text-white min-h-[80px]"
+  [ngClass]="currentRoute !== '/weather' ? 'bg-base-200' : 'bg-transparent'"
+>
   <!-- Logo -->
   <div class="navbar-start">
-    <a routerLink="/" class="btn btn-ghost text-xl">ClimApp</a>
+    <a routerLink="/weather" class="btn btn-ghost text-xl">ClimApp</a>
   </div>
-
-  @if(isLogged() && currentRoute != '/'){
-
-  <!-- Buscador centrado -->
-  <div class="navbar-center">
-    <label class="input bg-white/10 backdrop-blur-lg text-white border border-white/20 rounded-full px-5 py-2 shadow-lg">
-
-        <svg class="h-[1.5em] opacity-70" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <g
-            stroke-linejoin="round"
-            stroke-linecap="round"
-            stroke-width="2.5"
-            fill="none"
-            stroke="currentColor"
-            >
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.3-4.3"></path>
-            </g>
-        </svg>
-
-        
-        <input 
-            type="search" 
-            class="grow bg-transparent focus:outline-none placeholder-white/60" 
-            placeholder="Search by city " 
-        />
-        
-    </label>
-  </div>
-  
-  }
 
   <!-- Botón derecha -->
   <div class="navbar-end">
-    @if(isLogged() && currentRoute != '/'){
-      <button class="btn btn-ghost backdrop-blur-md" (click)="logout()">Cerrar sesión</button>
+    @if(isLogged()){
+      <button class="btn btn-ghost backdrop-blur-md" (click)="logout()">
+        Cerrar sesión
+      </button>
     }
     @else {
-      <a class="btn btn-ghost border border-white/30 backdrop-blur-md">Regístrate</a>
+      <a class="btn btn-ghost border border-white/30 backdrop-blur-md">
+        Regístrate
+      </a>
     }
   </div>
-
 </div>

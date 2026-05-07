@@ -14,7 +14,7 @@ export const routes: Routes = [
     canActivate: [authGuard] 
   },
   {
-    path: 'map/:lat/:lon',
+    path: 'map',
     component: MapPage,
     canActivate: [authGuard]
   },

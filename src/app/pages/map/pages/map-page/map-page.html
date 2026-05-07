@@ -1,2 +1,16 @@
-<div id="mapid"></div>
+<div class="relative flex flex-col w-full h-screen overflow-hidden">
+    
+    <div class="h-[80px] w-full flex-none bg-base-200"></div>
 
+    <div id="mapid" class="flex-1 w-full z-10"></div>
+
+    <div class="weather absolute bottom-[-30px] right-[90px] z-[999]">
+        <div>
+                <app-weather-card
+                    [lat]="lat"
+                    [lon]="lon">
+                </app-weather-card>
+        </div>
+    </div>
+
+</div>

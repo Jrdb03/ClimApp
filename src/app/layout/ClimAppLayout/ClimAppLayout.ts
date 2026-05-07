@@ -10,5 +10,5 @@ import { Footer } from "../components/footer/footer";
   templateUrl: './ClimAppLayout.html',
 })
 export class ClimAppLayout { 
-
+  
 }
